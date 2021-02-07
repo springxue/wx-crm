@@ -1,4 +1,4 @@
-package com.casic.warehouse.bean;
+package com.casic.weixin.bean;
 
 public class MeTemplate {
     public String name;

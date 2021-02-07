@@ -1,4 +1,4 @@
-package com.casic.warehouse.common;
+package com.casic.weixin.common;
 
 import lombok.Data;
 

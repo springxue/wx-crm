@@ -1,4 +1,4 @@
-package com.casic.warehouse.util;
+package com.casic.weixin.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

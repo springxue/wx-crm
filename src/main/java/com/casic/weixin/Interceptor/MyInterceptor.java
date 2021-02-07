@@ -1,4 +1,4 @@
-package com.casic.warehouse.Interceptor;
+package com.casic.weixin.Interceptor;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

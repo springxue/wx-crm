@@ -1,4 +1,4 @@
-package com.casic.warehouse.common;
+package com.casic.weixin.common;
 
 //定义返回数据使用的状态码
 public interface ResultCode {

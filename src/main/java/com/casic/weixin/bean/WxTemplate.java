@@ -1,4 +1,4 @@
-package com.casic.warehouse.bean;
+package com.casic.weixin.bean;
 
 import java.util.Map;
 

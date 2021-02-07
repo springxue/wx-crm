@@ -1,4 +1,4 @@
-package com.casic.warehouse;
+package com.casic.weixin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
