@@ -1,5 +1,6 @@
 package com.casic.weixin.config;
 
+import com.casic.weixin.common.AccessToken;
 import com.casic.weixin.service.CommonService;
 import com.casic.weixin.service.WxService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ReflashAccessTokenTask {
     //或直接指定时间间隔，例如：5秒
     //@Scheduled(fixedRate=5000)
     private void configureTasks() {
-        commonService.getAccessToken();
+        AccessToken.setAccessToken(commonService.getAccessToken());
         System.err.println("执行静态定时任务时间: " + LocalDateTime.now());
     }
 }

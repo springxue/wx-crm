@@ -23,7 +23,6 @@ public class CommonController {
 //        System.out.println(request.getParameter("timestamp"));
 //        System.out.println(request.getParameter("nonce"));
 //        System.out.println(request.getParameter("echostr"));
-        System.out.println(request.getParameter("ToUserName"));
         boolean isGet = request.getMethod().toLowerCase().equals("get");
         PrintWriter print;
         if (isGet) {
