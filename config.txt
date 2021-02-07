@@ -1,0 +1,5 @@
+napapp   token  ae10e0cb1904934c 
+微信测试
+appID=wx84b9c1ec1275a3b2
+
+appsecret=53654e03dbe36bb022d5d5cad807aa0d
