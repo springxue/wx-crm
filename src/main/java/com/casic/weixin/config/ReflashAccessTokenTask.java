@@ -2,7 +2,6 @@ package com.casic.weixin.config;
 
 import com.casic.weixin.common.AccessToken;
 import com.casic.weixin.service.CommonService;
-import com.casic.weixin.service.WxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
