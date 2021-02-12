@@ -6,13 +6,18 @@ import com.casic.weixin.bean.TemplateData;
 import com.casic.weixin.bean.WxTemplate;
 import com.casic.weixin.common.AccessToken;
 import com.casic.weixin.service.CommonService;
+import com.casic.weixin.service.MessageService;
+import com.casic.weixin.util.XMLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,15 +26,24 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class PushController {
-@Autowired
+public class MessageController {
+    @Autowired
     CommonService commonService;
-
+    @Autowired
+    MessageService messageService;
+    /**
+     * 接收微信服务器返回的消息
+     */
+    @PostMapping("/")
+    public void getMessage(HttpServletRequest request, HttpServletResponse response){
+        messageService.autoReply(request,response);
+    }
 
     /*
      * 微信测试账号 批量 循环推送 模板消息
      */
     @RequestMapping("/weChatPush")
+    @ResponseBody
     public String weChatPush() {
         try {
             List<String> ls = commonService.getOpenId(AccessToken.getAccessToken());
