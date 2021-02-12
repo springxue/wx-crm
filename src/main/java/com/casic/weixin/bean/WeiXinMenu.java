@@ -11,5 +11,6 @@ public class WeiXinMenu {
     private String type;
     private String key;
     private int pid;
+    private String Url;
     private List<WeiXinMenu> sub_button;
 }
