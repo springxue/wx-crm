@@ -36,7 +36,7 @@ public class MessageController {
      */
     @PostMapping("/")
     public void getMessage(HttpServletRequest request, HttpServletResponse response){
-        messageService.autoReply(request,response);
+        messageService.autoHandel(request,response);
     }
 
     /*

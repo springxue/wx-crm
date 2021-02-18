@@ -1,5 +1,7 @@
 package com.casic.weixin.service;
 
+import com.casic.weixin.bean.MessageType;
+import com.casic.weixin.bean.WeiXinMedia;
 import com.casic.weixin.util.XMLUtil;
 import org.springframework.stereotype.Service;
 
@@ -18,23 +20,46 @@ public class MessageService {
      * @param request
      * @param response
      */
-    public  void autoReply(HttpServletRequest request, HttpServletResponse response) {
+    public  void autoHandel(HttpServletRequest request, HttpServletResponse response) {
         Map<String,String> messageMap=XMLUtil.reqMsg2Map(request);
         System.out.println(messageMap);
+
         String msgType=messageMap.get("MsgType");
-        Map<String,String>replyMap=new HashMap<>();
-        replyMap.put("ToUserName",messageMap.get("FromUserName"));
-        replyMap.put("FromUserName",messageMap.get("ToUserName"));
-        replyMap.put("CreateTime",String.valueOf(new Date().getTime()));
-        replyMap.put("MsgType","text");
-        String content="发送消息成功！";
-        replyMap.put("Content",content);
+        Map<String,Object>replyMap=new HashMap<>();
+        if(MessageType.MSG_IMAGE_TYPE.equals(msgType)){
+            replyMap.put("ToUserName",messageMap.get("FromUserName"));
+            replyMap.put("FromUserName",messageMap.get("ToUserName"));
+            replyMap.put("CreateTime",String.valueOf(new Date().getTime()));
+            replyMap.put("MsgType","text");
+            String content="发送消息成功！";
+            replyMap.put("Content",content);
+        }else if(MessageType.MSG_TEXT_TYPE.equals(msgType)){
+            replyMap.put("ToUserName",messageMap.get("FromUserName"));
+            replyMap.put("FromUserName",messageMap.get("ToUserName"));
+            replyMap.put("CreateTime",String.valueOf(new Date().getTime()));
+            replyMap.put("MsgType","image");
+            Map<String,String>mediaIdMap=new HashMap<>();
+            mediaIdMap.put("MediaId","wHVsXUPbRgNHWOxFVEkMZ7OHEuWMTMCSKMydpbqQffjzu3AulLZ6WR5ZByUhNpAU");
+            replyMap.put("Image",mediaIdMap);
+        }else if(MessageType.MSG_EVENT_TYPE.equals(msgType)){
+            if("subscribe".equals(messageMap.get("Event"))){
+                replyMap.put("ToUserName",messageMap.get("FromUserName"));
+                replyMap.put("FromUserName",messageMap.get("ToUserName"));
+                replyMap.put("CreateTime",String.valueOf(new Date().getTime()));
+                replyMap.put("MsgType","text");
+                String content="欢迎关注商机云!";
+                replyMap.put("Content",content);
+            }else if("unsubscribe".equals(messageMap.get("Event"))){
+                //取消关注
+            }
+        }
         PrintWriter writer = null;
         try {
             response.setContentType("application/xml;charset=UTF-8");
             response.setContentType("UTF-8");
             writer=response.getWriter();
-            writer.write(XMLUtil.map2Xml(replyMap));
+            System.out.println(XMLUtil.multilayerMapToXml(replyMap,true));
+            writer.write(XMLUtil.multilayerMapToXml(replyMap,true));
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();

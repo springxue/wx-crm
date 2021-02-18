@@ -3,6 +3,10 @@ package com.casic.weixin.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.casic.weixin.common.AccessToken;
+import com.casic.weixin.common.Result;
+import com.casic.weixin.util.RequestUtil;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -57,4 +61,10 @@ public class CommonService {
         return lists;
     }
 
+    public Result getBasicUserInfo(String openid) {
+        String url="https://api.weixin.qq.com/cgi-bin/user/info?access_token="+ AccessToken.getAccessToken() +"&openid="+openid+"&lang=zh_CN";
+        String s = RequestUtil.get(url);
+        System.out.println(s);
+        return Result.ok();
+    }
 }
