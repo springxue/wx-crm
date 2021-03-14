@@ -1,8 +1,10 @@
 package com.casic.weixin.service;
 
 import com.casic.weixin.bean.MessageType;
-import com.casic.weixin.bean.WeiXinMedia;
+import com.casic.weixin.bean.Customer;
+import com.casic.weixin.util.DateUtil;
 import com.casic.weixin.util.XMLUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,8 @@ import java.util.Map;
 
 @Service
 public class MessageService {
+    @Autowired
+    CommonService commonService;
     /**
      * 自动处理用户发送的消息
      * @param request
@@ -43,6 +47,11 @@ public class MessageService {
             replyMap.put("Image",mediaIdMap);
         }else if(MessageType.MSG_EVENT_TYPE.equals(msgType)){
             if("subscribe".equals(messageMap.get("Event"))){
+                //查询基本信息存入数据库
+                Customer customer=commonService.getBasicUserInfo(messageMap.get("FromUserName"));
+                customer.setSubscribe_time(DateUtil.timeStamp2Date(customer.getSubscribe_time(),null));
+                commonService.addCustomer(customer);
+
                 replyMap.put("ToUserName",messageMap.get("FromUserName"));
                 replyMap.put("FromUserName",messageMap.get("ToUserName"));
                 replyMap.put("CreateTime",String.valueOf(new Date().getTime()));
@@ -51,6 +60,7 @@ public class MessageService {
                 replyMap.put("Content",content);
             }else if("unsubscribe".equals(messageMap.get("Event"))){
                 //取消关注
+                System.out.println("取消关注");
             }
         }
         PrintWriter writer = null;

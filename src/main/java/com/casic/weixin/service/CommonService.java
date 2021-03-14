@@ -3,10 +3,11 @@ package com.casic.weixin.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.casic.weixin.bean.Customer;
 import com.casic.weixin.common.AccessToken;
-import com.casic.weixin.common.Result;
+import com.casic.weixin.dao.CommonDao;
 import com.casic.weixin.util.RequestUtil;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,6 +18,8 @@ import java.util.Map;
 
 @Service
 public class CommonService {
+    @Autowired
+    CommonDao commonDao;
     /*
      * 获取 access_token（接口调用凭据）
      */
@@ -61,10 +64,21 @@ public class CommonService {
         return lists;
     }
 
-    public Result getBasicUserInfo(String openid) {
+    /**
+     * 获取微信用户信息
+     * @param openid
+     * @return
+     */
+    public Customer getBasicUserInfo(String openid) {
         String url="https://api.weixin.qq.com/cgi-bin/user/info?access_token="+ AccessToken.getAccessToken() +"&openid="+openid+"&lang=zh_CN";
-        String s = RequestUtil.get(url);
-        System.out.println(s);
-        return Result.ok();
+        String userInfoJson = RequestUtil.get(url);
+        Customer user=JSON.parseObject(userInfoJson, Customer.class);
+        System.out.println(user);
+        return user;
     }
+
+    public void addCustomer(Customer customer) {
+        commonDao.addCustomer(customer);
+    }
+
 }

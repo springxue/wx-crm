@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>仓库管理系统</title>
+  <title>商机云</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -88,14 +88,14 @@
       <div class="layui-side layui-side-menu">
         <div class="layui-side-scroll">
           <div class="layui-logo" lay-href="home/console.html">
-            <span>仓库管理系统</span>
+            <span>商机云</span>
           </div>
 
           <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
             <li data-name="home" class="layui-nav-item layui-nav-itemed layui-this">
-              <a lay-href="/toConsole" lay-tips="主页" lay-direction="2">
+              <a lay-href="/toConsole" lay-tips="欢迎页" lay-direction="2">
                 <i class="layui-icon layui-icon-home"></i>
-                <cite>主页</cite>
+                <cite>欢迎页</cite>
               </a>
 <!--              <dl class="layui-nav-child">-->
 <!--                <dd data-name="console" class="layui-this">-->
@@ -110,21 +110,16 @@
 <!--              </dl>-->
             </li>
             <li data-name="basic" class="layui-nav-item">
-              <a href="javascript:;" lay-tips="基础管理" lay-direction="2">
+              <a lay-href="/toCustomerList" lay-tips="用户管理" lay-direction="2">
                 <i class="layui-icon layui-icon-component"></i>
-                <cite>基础管理</cite>
+                <cite>用户管理</cite>
               </a>
-              <dl class="layui-nav-child">
-                <dd data-name="customer">
-                  <a lay-href="/customer/list">客户管理</a>
-                </dd>
-                <dd data-name="supplier">
-                  <a lay-href="component/button/index.html">供应商管理</a>
-                </dd>
-                <dd data-name="goods">
-                  <a href="javascript:;">商品管理</a>
-                </dd>
-              </dl>
+            </li>
+            <li data-name="basic" class="layui-nav-item">
+              <a lay-href="/toDic" lay-tips="用户管理" lay-direction="2">
+                <i class="layui-icon layui-icon-component"></i>
+                <cite>分类管理</cite>
+              </a>
             </li>
 
 
@@ -290,6 +285,8 @@
     base: '${request.contextPath}/static/layuiadmin/' //静态资源所在路径
   }).extend({
     index: 'lib/index' //主入口模块
+    ,tableEdit:'modules/treeTable/tableEdit'  //表格树依赖我另外写的tableEdit模块，本项目就有。
+    ,tableTree:'modules/treeTable/tableTree'
   }).use('index');
   </script>
 </body>

@@ -7,7 +7,6 @@ import com.casic.weixin.bean.WxTemplate;
 import com.casic.weixin.common.AccessToken;
 import com.casic.weixin.service.CommonService;
 import com.casic.weixin.service.MessageService;
-import com.casic.weixin.util.XMLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -70,6 +69,7 @@ public class MessageController {
         //推送的模版 （目前为了简单测试 很多参数都写死,固定了,但也可以根据需要动态传入参数）
         WxTemplate wxTe = new WxTemplate();
         wxTe.setTouser(openid);//用户的openid（接收人，这里应该传进来的）
+        System.out.println("openid: "+openid);
         wxTe.setTemplate_id("DGNgq1RhqyohvSsMLsmkgAvgWtk9hRubNFw_UIZJuyo");//订阅消息模板id
         wxTe.setUrl("www.baidu.com");//跳转链接
 

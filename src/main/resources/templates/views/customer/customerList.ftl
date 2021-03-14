@@ -5,6 +5,13 @@
     <title>客户列表</title>
     <link rel="stylesheet" href="${request.contextPath}/static/layuiadmin/layui/css/layui.css" media="all">
 <#--    <link rel="stylesheet" href="${request.contextPath}/static/layuiadmin/style/admin.css" media="all">-->
+    <style>
+        .layui-table-cell{
+            text-align:center;
+            height:auto;
+            white-space:normal;
+        }
+    </style>
 </head>
 <body style="background-color: #F2F2F2;" >
 <div style="padding: 20px; ">
@@ -72,7 +79,7 @@
         var addLayerIndex='';
         table.render({
             elem: '#customer'
-            ,url:'${request.contextPath}/customer/getPageList'
+            ,url:'${request.contextPath}/getCustomerPageList'
             ,method:'post'
             ,contentType: "application/json;charset=UTF-8"
             ,dataType: 'json'
@@ -88,16 +95,14 @@
             ,title: '客户表'
             ,cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                ,{field:'id', title:'客户id', fixed: 'left',hide:true}
-                ,{field:'customername', title:'客户名称',fixed:'left'}
-                ,{field:'zip', title:'客户邮编'}
+                ,{field:'openid', title:'客户id', fixed: 'left',hide:true}
+                ,{field:'headimgurl',title:'头像',align: "center", templet: "#imgtmp"}
+                ,{field:'nickname', title:'客户名称'}
+                ,{field:'company', title:'公司名称'}
 
                 ,{field:'address', title:'客户地址'}
                 ,{field:'telephone', title:'客户电话'}
                 ,{field:'connectionperson', title:'联系人'}
-                ,{field:'phone', title:'联系人电话'}
-                ,{field:'bank', title:'开户行'}
-                ,{field:'account', title:'账户'}
                 ,{field:'email', title:'邮箱',templet: function(res){
                         return '<em>'+ res.email +'</em>'
                     }}
@@ -219,7 +224,7 @@
                     type: 2,
                     area: ['500px', '710px'],
                     // area: '30%',
-                    content: ['/customer/customerLayer?id='+data.id,'no'], //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    content: ['/customerLayer?id='+data.id,'no'], //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                     btn: ['确认','取消'], //按钮
                     yes:function (index,layero) {
                         addLayerIndex=index;
@@ -276,6 +281,9 @@
         }
     });
 
+</script>
+<script type="text/html" id="imgtmp">
+    <img src="{{d.headimgurl}}" style="height: 50px;width: 50px">
 </script>
 </body>
 </html>

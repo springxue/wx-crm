@@ -1,21 +1,17 @@
 package com.casic.weixin.controller;
 
+import com.casic.weixin.bean.Customer;
 import com.casic.weixin.common.Result;
 import com.casic.weixin.service.CommonService;
 import com.casic.weixin.util.CheckoutUtil;
-import com.casic.weixin.util.XMLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 
@@ -76,7 +72,7 @@ public class CommonController {
      * 获取用户基本信息
      * @return
      */
-    public Result getUserInfo(String openid){
+    public Customer getUserInfo(String openid){
         return commonService.getBasicUserInfo(openid);
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.casic.weixin.dao.CrmDao">
+    <select id="getTotalDicCount" resultType="java.lang.Long">
+        select count(1) from  sys_dic
+    </select>
+    <select id="getDicPageList" resultType="java.util.Map">
+        select * from sys_dic
+    </select>
+
+    <select id="getDicMapById" resultType="java.util.Map">
+        select * from sys_dic where id=#{id}
+    </select>
+
+    <select id="getDicMapListByParentId" resultType="java.util.Map">
+        select * from sys_dic where parentid=#{parentId}
+    </select>
+</mapper>

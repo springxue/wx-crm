@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.casic</groupId>
-    <artifactId>warehouse</artifactId>
+    <artifactId>wx-crm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>warehouse</name>
+    <name>wx-crm</name>
     <description>仓库管理系统</description>
 
     <properties>
@@ -123,6 +123,11 @@
             <version>2.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>4.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

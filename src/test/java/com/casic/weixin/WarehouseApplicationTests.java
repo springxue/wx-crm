@@ -4,18 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.casic.weixin.bean.WeiXinMedia;
 import com.casic.weixin.bean.WeiXinMenu;
 import com.casic.weixin.common.AccessToken;
+import com.casic.weixin.common.Result;
 import com.casic.weixin.service.CommonService;
 import com.casic.weixin.util.HttpClientUtil;
 import com.casic.weixin.util.MediaUtil;
 import com.casic.weixin.util.XMLUtil;
-import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +34,7 @@ class WarehouseApplicationTests {
         menu1.setId(1);
         menu1.setName("公司简介");
         menu1.setType("view");
-        menu1.setUrl("http://6xkc6a.natappfree.cc/toCompanyInfo");
+        menu1.setUrl("http://nqkgmb.natappfree.cc/toCompanyInfo");
         menuList.add(menu1);
         WeiXinMenu menu2=new WeiXinMenu();
         List<WeiXinMenu> menu2Sub=new ArrayList<>();
@@ -46,7 +43,7 @@ class WarehouseApplicationTests {
         menu2Sub1.setId(1);
         menu2Sub1.setName("我的商机");
         menu2Sub1.setType("view");
-        menu2Sub1.setUrl("http://6xkc6a.natappfree.cc/myBusiness");
+        menu2Sub1.setUrl("http://nqkgmb.natappfree.cc/toRegister");
         menu2Sub.add(menu2Sub1);
         WeiXinMenu menu2Sub2=new WeiXinMenu();
         menu2Sub2.setId(1);
