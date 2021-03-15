@@ -36,16 +36,16 @@
                 <label class="weui-label">求购产品</label>
             </div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="goods" placeholder="规格、材质">
+                <input class="weui-input" type="goods" placeholder="产品名称">
             </div>
         </div>
 
         <div class="weui-cell weui-cell_vcode" style="margin-top: 10px">
             <div class="weui-cell__hd">
-                <label class="weui-label">报价数量</label>
+                <label class="weui-label">数量</label>
             </div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="quantity" placeholder="规格、材质">
+                <input class="weui-input" type="quantity" placeholder="只能输入数字">
             </div>
         </div>
 
@@ -57,6 +57,13 @@
                 <input class="weui-input" type="goods" placeholder="11位手机号码">
             </div>
         </div>
+            <label class="weui-label" style="margin-left: 15px;margin-top: 10px">描述</label>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入文本" rows="3" style="border: #5f646e solid 1px"></textarea>
+<#--                    <div class="weui-textarea-counter"><span>0</span>/200</div>-->
+                </div>
+            </div>
 </div>
 <div class="weui-btn-area">
     <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">确定</a>
