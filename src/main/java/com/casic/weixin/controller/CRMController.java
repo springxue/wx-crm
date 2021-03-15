@@ -68,4 +68,9 @@ public class CRMController {
         paramMap.put("limit",limitNum);
         return crmService.getDicPageList(paramMap);
     }
+    @RequestMapping("/toBuy")
+    public String toBuy(){
+        return "views/crm/wxpage/buy";
+    }
+
 }
