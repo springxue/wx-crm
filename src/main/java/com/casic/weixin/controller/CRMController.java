@@ -72,5 +72,9 @@ public class CRMController {
     public String toBuy(){
         return "views/crm/wxpage/buy";
     }
+    @RequestMapping("/toQuote")
+    public String toQuote(){
+        return "views/crm/wxpage/quote";
+    }
 
 }
